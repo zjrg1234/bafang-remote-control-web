@@ -115,4 +115,10 @@ http://manage.huazyk.cn/dashboard/analysis 
 
 1、到目录：cd /www/wwwroot/www-admin/huazhi-remote-control-web/ 2、git pull 如果报错 执行一下 git reset --hard HEAD 再git pull 3、pnpm build 4、全部完成去到网站、找到nginx
 
-外网ipv4面板地址: https://47.102.215.161:8888/9d08dc2d 内网面板地址:     https://172.29.213.229:8888/9d08dc2d username: user password: baotaal02AA2
+外网ipv4面板地址: https://47.102.215.161:8888/9d08dc2d 内网面板地址:    
+ https://172.29.213.229:8888/9d08dc2d username: user password: baotaal02AA2
+
+// 八方的版本
+https://121.40.159.233:8888/8528a4c0
+user
+baotaazWQ8xA
