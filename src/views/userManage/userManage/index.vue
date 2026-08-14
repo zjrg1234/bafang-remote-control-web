@@ -13,7 +13,7 @@
       @reset="handleReset"
     />
 
-    <div class="page art-full-height">
+    <div class="page">
       <ElCard class="art-table-card" shadow="never" style="margin-top: 0">
         <!-- 表格 -->
         <ArtTable
