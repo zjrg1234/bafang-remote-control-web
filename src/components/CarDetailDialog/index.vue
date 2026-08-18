@@ -41,6 +41,9 @@
           <el-descriptions-item label="绑定时间">
             {{ form.bind_time || '-' }}
           </el-descriptions-item>
+          <el-descriptions-item label="接收机">
+            {{ form.receiver_id || '-' }}
+          </el-descriptions-item>
           <el-descriptions-item label="APP发射机">
             <span class="mono-font">{{ form.app_transmitter || '-' }}</span>
           </el-descriptions-item>
