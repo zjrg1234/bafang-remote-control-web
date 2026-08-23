@@ -122,3 +122,9 @@ http://manage.huazyk.cn/dashboard/analysis 
 https://121.40.159.233:8888/8528a4c0
 user
 baotaazWQ8xA
+
+
+https://bfykhtym.fzbkapp.com/
+
+admin-bfyk-aaxijqszzxe111
+AUNL9T0KhpdwSjIf*q421231was

@@ -101,6 +101,10 @@ QQ群：<a href="https://qm.qq.com/cgi-bin/qm/qr?k=Gg6yzZLFaNgmRhK0T5Qcjf7-XcAFW
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Daymychen/art-design-pro&type=Date)](https://www.star-history.com/#Daymychen/art-design-pro&Date) https://admin.zksjyk.cn/#/auth/login admin-zzsj-aaxijqe111 AUNL9T0KhpdwSjIf\*qwas 华制后台http://manage.huazyk.cn/dashboard/analysis 账号华制admin8877555rrpppjn5密码8877555rrpppjn511p21测试环境
+[![Star History Chart](https://api.star-history.com/svg?repos=Daymychen/art-design-pro&type=Date)](https://www.star-history.com/#Daymychen/art-design-pro&Date)
+
+ https://admin.zksjyk.cn/#/auth/login
+
+ admin-zzsj-aaxijqe111 AUNL9T0KhpdwSjIf\*qwas 华制后台http://manage.huazyk.cn/dashboard/analysis 账号华制admin8877555rrpppjn5密码8877555rrpppjn511p21测试环境
 
 admin 7vmKNu1QACDzx 
