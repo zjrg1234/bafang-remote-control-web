@@ -68,6 +68,7 @@
 
   defineOptions({ name: 'AppeaInfoDialog' })
 
+  const emit = defineEmits(['refresh'])
   const dialogFormVisible = ref(false)
 
   const platformReplyInfoRea = platformReplyInfo
@@ -127,6 +128,7 @@
     }).then((res) => {
       if (res.code == 200) {
         ElMessage.success('处理成功')
+        emit('refresh')
         dialogFormVisible.value = false
       } else {
         ElMessage.error(res.msg)

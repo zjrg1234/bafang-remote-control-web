@@ -51,7 +51,7 @@
         </ArtTable>
       </ElCard>
     </div>
-    <AppeaInfoDialog ref="appeInfoDialogRef" />
+    <AppeaInfoDialog ref="appeInfoDialogRef" @refresh="handleSearch" />
 
     <CarDetailDialog ref="carDetailDialogRef" />
 
