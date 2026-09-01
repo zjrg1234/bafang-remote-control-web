@@ -1,5 +1,5 @@
 <template>
-  <div class="page art-full-height">
+  <div class="page art-full-height1">
     <ElCard class="art-table-card" shadow="never" header="车辆基本参数" style="margin-top: 0">
       <el-form :model="form" label-width="120" style="max-width: 800px" :inline="true">
         <el-form-item label="方向左转值">

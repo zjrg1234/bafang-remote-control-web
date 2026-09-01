@@ -1,5 +1,5 @@
 <template>
-  <div class="art-full-height">
+  <div class="art-full-height1">
     <div class="tree-container">
       <div class="left-sidebar">
         <ElCard class="art-table-card" shadow="never" style="margin-top: 0">
@@ -19,7 +19,7 @@
         </ElCard>
       </div>
 
-      <div class="right-content art-full-height">
+      <div class="right-content art-full-height1">
         <UserSearch v-model="defaultFilter" />
 
         <ElCard class="art-table-card" shadow="never">

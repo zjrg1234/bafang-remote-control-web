@@ -1,6 +1,6 @@
 <template>
   <div class="advert-page-image-record">
-    <div class="user-page art-full-height">
+    <div class="user-page art-full-height1">
       <ElCard class="art-table-card" shadow="never" style="margin-top: 0">
         <el-button type="primary" @click="add">新增</el-button>
         <!-- 表格 -->

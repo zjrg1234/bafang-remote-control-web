@@ -1,6 +1,6 @@
 <!-- 基础表格 -->
 <template>
-  <div class="user-page art-full-height">
+  <div class="user-page art-full-height1">
     <ElCard class="art-table-card" shadow="never" style="margin-top: 0">
       <!-- 表格 -->
       <ArtTable

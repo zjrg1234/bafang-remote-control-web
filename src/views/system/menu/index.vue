@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-page art-full-height">
+  <div class="menu-page art-full-height1">
     <!-- 搜索栏 -->
     <ArtSearchBar
       v-model="formFilters"

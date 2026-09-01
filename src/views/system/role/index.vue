@@ -1,5 +1,5 @@
 <template>
-  <div class="role-page art-full-height">
+  <div class="role-page art-full-height1">
     <RoleSearch
       v-show="showSearchBar"
       v-model="searchForm"

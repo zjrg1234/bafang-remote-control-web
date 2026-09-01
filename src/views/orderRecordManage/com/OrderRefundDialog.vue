@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-dialog v-model="dialogFormVisible" title="退款记录" class="top-right-dialog" width="600">
-      <div class="page art-full-height">
+      <div class="page art-full-height1">
         <ElCard class="art-table-card" shadow="never" style="margin-top: 0">
           <!-- <el-button type="primary" @click="handleAdd">新增</el-button> -->
           <!-- 表格 -->

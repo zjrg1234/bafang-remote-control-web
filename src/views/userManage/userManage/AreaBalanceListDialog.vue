@@ -7,7 +7,7 @@
       width="800"
       :append-to-body="true"
     >
-      <div class="page art-full-height">
+      <div class="page art-full-height1">
         <ArtSearchBar
           ref="searchBarRef"
           v-model="searchFormState"

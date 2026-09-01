@@ -13,7 +13,7 @@
       @reset="handleReset"
     />
 
-    <div class="page art-full-height">
+    <div class="page art-full-height1">
       <ElCard class="art-table-card" shadow="never" style="margin-top: 0">
         <ElButton type="primary" @click="add">新增</ElButton>
 
