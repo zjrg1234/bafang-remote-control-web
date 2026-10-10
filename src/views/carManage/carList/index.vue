@@ -123,6 +123,14 @@
       }
     },
     {
+      key: 'app_transmitter_id',
+      label: '发射机',
+      type: 'input',
+      props: {
+        placeholder: '请输入发射机'
+      }
+    },
+    {
       key: 'vehicle_type',
       label: '车辆类型',
       type: 'select',

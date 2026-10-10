@@ -42,7 +42,9 @@
             {{ form.bind_time || '-' }}
           </el-descriptions-item>
           <el-descriptions-item label="APP发射机">
-            <span class="mono-font">{{ form.app_transmitter || '-' }}</span>
+            <span class="mono-font">{{
+              form.app_transmitter || form.app_transmitter_id || '-'
+            }}</span>
           </el-descriptions-item>
         </el-descriptions>
       </div>
