@@ -11,10 +11,15 @@
         <el-form-item label="活动标题" prop="activity_title">
           <el-input v-model="formData.activity_title" placeholder="请输入活动标题"></el-input>
         </el-form-item>
+
+        <el-form-item label="链接" prop="image_url">
+          <el-input v-model="formData.image_url" placeholder="请输入链接地址"></el-input>
+        </el-form-item>
+
         <el-form-item label="公告所属类型" prop="type">
           <el-radio-group v-model="formData.type">
-            <el-radio label="1" :value="1">平台公告</el-radio>
-            <el-radio label="2" :value="2">专区公告</el-radio>
+            <el-radio label="1" :value="1">活动公告</el-radio>
+            <el-radio label="2" :value="2">视频教程</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="标题图片" prop="activity_image">
@@ -168,6 +173,7 @@
     activity_type: 0, //活动公告指向类型 1活动公告 2排行榜
     status: 1, //状态 0不启用 1启用
     sort: '', //排序号
+    image_url: '', //排序号
     remark: '' // 备注
   })
 
@@ -244,6 +250,7 @@
       activity_type: 0, //活动公告指向类型 1活动公告 2排行榜
       status: 1, //状态 0不启用 1启用
       sort: '', //排序号
+      image_url: '',
       remark: '' // 备注
     }
     emit('refresh')
