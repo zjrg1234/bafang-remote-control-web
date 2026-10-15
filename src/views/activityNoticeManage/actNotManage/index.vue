@@ -343,7 +343,7 @@
         type: 'warning'
       })
         .then(() => {
-          delAct(command.detail.id).then((res) => {
+          delAct({ id: command.detail.id }).then((res) => {
             if (res.code === 200) {
               ElMessage({
                 type: 'success',
