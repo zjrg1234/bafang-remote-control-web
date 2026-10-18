@@ -270,7 +270,7 @@
       type: 'warning'
     }).then(() => {
       // 确认删除，执行删除操作
-      delCar({ id: row.id }).then(() => {
+      delCar({ id: row.id, receiver_id: row.receiver_id }).then(() => {
         ElMessage.success('删除成功')
         getData()
       })
