@@ -46,7 +46,7 @@
           <ArtWangEditor
             ref="simpleEditorRef"
             v-model="formData.content"
-            height="200px"
+            height="350px"
             placeholder="请输入内容，体验简化的编辑功能..."
             :toolbar-keys="simpleToolbarKeys"
           />
