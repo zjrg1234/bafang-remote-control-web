@@ -24,6 +24,7 @@
   import { useUserStore } from '@/store/modules/user'
   import EmojiText from '@/utils/ui/emojo'
   import { IDomEditor, IToolbarConfig, IEditorConfig } from '@wangeditor/editor'
+  import axios from 'axios' // 确保引入了 axios，或者用你封装的 request 实例
 
   defineOptions({ name: 'ArtWangEditor' })
 
@@ -66,7 +67,7 @@
   const DEFAULT_UPLOAD_CONFIG = {
     maxFileSize: 3 * 1024 * 1024, // 3MB
     maxNumberOfFiles: 10,
-    fieldName: 'file',
+    fieldName: 'imageFile[]',
     allowedFileTypes: ['image/*']
   } as const
 
@@ -98,9 +99,7 @@
 
   // 计算属性：上传服务器地址
   const uploadServer = computed(
-    () =>
-      props.uploadConfig?.server ||
-      `${import.meta.env.VITE_API_PROXY_URL}/api/common/upload/wangeditor`
+    () => `${import.meta.env.VITE_API_PROXY_URL}/backend/upload/picture`
   )
 
   // 合并上传配置
@@ -132,28 +131,81 @@
   })
 
   // 编辑器配置
-  const editorConfig: Partial<IEditorConfig> = {
-    placeholder: props.placeholder,
-    MENU_CONF: {
-      uploadImage: {
-        fieldName: mergedUploadConfig.value.fieldName,
-        maxFileSize: mergedUploadConfig.value.maxFileSize,
-        maxNumberOfFiles: mergedUploadConfig.value.maxNumberOfFiles,
-        allowedFileTypes: mergedUploadConfig.value.allowedFileTypes,
-        server: uploadServer.value,
-        headers: {
-          Authorization: userStore.accessToken
-        },
-        onSuccess() {
-          ElMessage.success(`图片上传成功 ${EmojiText[200]}`)
-        },
-        onError(file: File, err: any, res: any) {
-          console.error('图片上传失败:', err, res)
-          ElMessage.error(`图片上传失败 ${EmojiText[500]}`)
+  const editorConfig = computed((): Partial<IEditorConfig> => {
+    // 处理 token 拼接
+    const token = userStore.accessToken
+    const authHeader = token ? (token.startsWith('Bearer ') ? token : `Bearer ${token}`) : ''
+
+    return {
+      placeholder: props.placeholder,
+      MENU_CONF: {
+        uploadImage: {
+          // 改用 customUpload，完全接管上传逻辑
+          async customUpload(
+            file: File,
+            insertFn: (url: string, alt: string, href: string) => void
+          ) {
+            console.log(
+              '【开始上传】当前文件:',
+              file.name,
+              '大小:',
+              (file.size / 1024 / 1024).toFixed(2) + 'MB'
+            )
+
+            // 1. 自己在前端做一次大小和类型校验（防止被静默拦截）
+            const maxSize = mergedUploadConfig.value.maxFileSize
+            if (maxSize && file.size > maxSize) {
+              ElMessage.error(`图片大小不能超过 ${maxSize / 1024 / 1024}MB`)
+              return
+            }
+
+            try {
+              const formData = new FormData()
+              // 【关键】这里的字段名必须和后端接收的字段名完全一致！
+              // 如果后端写的是 @RequestParam("file")，这里就写 'file'
+              // 如果是 @RequestParam("imageFile[]")，这里就写 'imageFile[]'
+              formData.append(mergedUploadConfig.value.fieldName, file)
+
+              // 2. 发起请求
+              console.log('【发起请求】URL:', uploadServer.value)
+              const res = await axios.post(uploadServer.value, formData, {
+                headers: {
+                  Authorization: userStore.accessToken
+                }
+              })
+
+              console.log('【请求成功】后端返回数据:', res.data)
+
+              const imgUrl = res.data.data?.file[0]
+              if (imgUrl && typeof imgUrl === 'string') {
+                // 4. 手动插入图片
+                insertFn(imgUrl, file.name, '')
+                ElMessage.success('图片上传成功')
+              } else {
+                console.error('❌ 解析图片地址失败，请检查返回结构:', res.data)
+                ElMessage.error('上传成功，但解析图片地址失败')
+              }
+            } catch (error: any) {
+              console.error('【请求失败】错误详情:', error)
+              // 打印具体的错误状态码和报错信息
+              if (error.response) {
+                console.error('状态码:', error.response.status)
+                console.error('响应数据:', error.response.data)
+                ElMessage.error(
+                  `上传失败 (${error.response.status}): ${error.response.data?.message || '服务器错误'}`
+                )
+              } else if (error.request) {
+                console.error('无响应，可能是跨域或网络断开')
+                ElMessage.error('上传失败：网络错误或跨域被拦截')
+              } else {
+                ElMessage.error('上传失败：请求配置错误')
+              }
+            }
+          }
         }
       }
     }
-  }
+  })
 
   // 编辑器创建回调
   const onCreateEditor = (editor: IDomEditor) => {
