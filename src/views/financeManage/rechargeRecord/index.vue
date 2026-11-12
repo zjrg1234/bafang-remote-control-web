@@ -37,8 +37,10 @@
   import { fetchPaymentList } from '@/api/financeManage'
   import { fetchSpecialAreaList } from '@/api/common'
   import { PAYMENT_METHOD } from '@/config/constant'
-  defineOptions({ name: 'SpecialRecharge' })
+  import { useUserStore } from '@/store/modules/user'
 
+  defineOptions({ name: 'SpecialRecharge' })
+  const userStore = useUserStore()
   const specialAreaList = ref([])
   onBeforeMount(() => {
     fetchSpecialAreaList({
@@ -185,7 +187,8 @@
       apiFn: fetchPaymentList,
       apiParams: {
         page: 1,
-        size: 20
+        size: 20,
+        uid: userStore.uid
       },
       excludeParams: ['daterange', 'daterange1'],
       columnsFactory: () => [

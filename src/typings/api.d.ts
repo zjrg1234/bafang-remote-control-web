@@ -116,10 +116,13 @@ declare namespace Api {
     /** 用户列表项 */
     interface ListItem {
       phone: string
+      uid: string
     }
 
     /** 搜索参数 */
-    type SearchParams = Partial<Pick<ListItem, 'phone' | 'area'> & Api.Common.CommonSearchParams>
+    type SearchParams = Partial<
+      Pick<ListItem, 'phone' | 'area' | 'uid'> & Api.Common.CommonSearchParams
+    >
   }
 
   /** 用户管理 */

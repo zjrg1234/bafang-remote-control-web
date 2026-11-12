@@ -208,7 +208,7 @@
       const { username, password } = formData
 
       const {
-        data: { token, refreshToken }
+        data: { token, refreshToken, uid, level }
       } = await fetchLogin({
         username,
         password
@@ -222,6 +222,8 @@
       // 存储token和用户信息
       userStore.setToken(token, refreshToken)
       userStore.setUserName(username)
+      userStore.setUid(uid)
+      userStore.setLevel(level)
       const userInfo = await fetchGetUserInfo()
       userStore.setUserInfo(userInfo)
       userStore.setLoginStatus(true)

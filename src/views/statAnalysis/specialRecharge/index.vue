@@ -36,9 +36,12 @@
   import { useTable } from '@/composables/useTable'
   import { fetchDepositList } from '@/api/statAnalysis'
   import { fetchSpecialAreaList } from '@/api/common'
+  import { useUserStore } from '@/store/modules/user'
 
   defineOptions({ name: 'SpecialRecharge' })
   const specialAreaList = ref([])
+  const userStore = useUserStore()
+
   onBeforeMount(() => {
     fetchSpecialAreaList({
       page: 1,
@@ -118,7 +121,8 @@
       apiFn: fetchDepositList,
       apiParams: {
         page: 1,
-        size: 20
+        size: 20,
+        uid: userStore.uid
       },
       excludeParams: ['daterange'],
       columnsFactory: () => [

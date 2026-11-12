@@ -35,8 +35,13 @@ export const useUserStore = defineStore(
 
     const userName = ref('')
 
+    const uid = ref('')
+    const level = ref('')
+
     // 计算属性：获取用户信息
     const getUserInfo = computed(() => info.value)
+    const getUserUid = computed(() => uid)
+
     // 计算属性：获取设置状态
     const getSettingState = computed(() => useSettingStore().$state)
     // 计算属性：获取工作台状态
@@ -110,6 +115,14 @@ export const useUserStore = defineStore(
       userName.value = name
     }
 
+    const setUid = (id: string) => {
+      uid.value = id
+    }
+
+    const setLevel = (levelVal: string) => {
+      level.value = levelVal
+    }
+
     /**
      * 退出登录
      * 清空所有用户相关状态并跳转到登录页
@@ -146,6 +159,8 @@ export const useUserStore = defineStore(
       lockPassword,
       info,
       userName,
+      uid,
+      level,
       searchHistory,
       accessToken,
       refreshToken,
@@ -160,7 +175,10 @@ export const useUserStore = defineStore(
       setLockPassword,
       setToken,
       setUserName,
-      logOut
+      logOut,
+      setUid,
+      getUserUid,
+      setLevel
     }
   },
   {

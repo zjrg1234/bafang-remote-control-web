@@ -5,8 +5,9 @@ import request from '@/utils/http'
  * @param params 首页数据参数
  * @returns 首页数据响应
  */
-export function fetchDashboardData() {
+export function fetchDashboardData(params: any) {
   return request.post<any>({
-    url: '/backend/index'
+    url: '/backend/index',
+    params
   })
 }

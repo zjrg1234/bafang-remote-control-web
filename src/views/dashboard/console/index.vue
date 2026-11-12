@@ -16,11 +16,12 @@
 <script setup lang="ts">
   import CardList from './modules/card-list.vue'
   import ActiveUser from './modules/active-user.vue'
-  // import NewUser from './modules/new-user.vue'
   import { fetchDashboardData } from '@/api/dashboard'
   import { useCommon } from '@/composables/useCommon'
+  import { useUserStore } from '@/store/modules/user'
 
   defineOptions({ name: 'Console' })
+  const userStore = useUserStore()
 
   useCommon().scrollToTop()
   let cardData = reactive({
@@ -40,7 +41,7 @@
   })
 
   onMounted(() => {
-    fetchDashboardData().then((res) => {
+    fetchDashboardData({ uid: userStore.uid }).then((res) => {
       Object.assign(cardData, res.data)
 
       const dateDataVal: string[] = []

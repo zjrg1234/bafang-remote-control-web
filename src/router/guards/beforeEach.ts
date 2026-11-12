@@ -12,6 +12,7 @@ import { AppRouteRecord } from '@/types/router'
 import { RoutesAlias } from '../routesAlias'
 import { menuDataToRouter } from '../utils/menuToRouter'
 import { asyncRoutes } from '../routes/asyncRoutes'
+import { levelAsyncRoutes } from '../routes/levelAsyncRoutes'
 import { staticRoutes } from '../routes/staticRoutes'
 import { loadingService } from '@/utils/ui'
 import { useCommon } from '@/composables/useCommon'
@@ -218,9 +219,15 @@ async function getMenuData(router: Router): Promise<void> {
  * 处理前端控制模式的菜单逻辑
  */
 async function processFrontendMenu(router: Router): Promise<void> {
-  const menuList = asyncRoutes.map((route) => menuDataToRouter(route))
+  let menuList
   const userStore = useUserStore()
   const roles = userStore.info.roles
+  const level = userStore.level
+  if (level == '1') {
+    menuList = asyncRoutes.map((route) => menuDataToRouter(route))
+  } else {
+    menuList = levelAsyncRoutes.map((route) => menuDataToRouter(route))
+  }
 
   if (!roles) {
     throw new Error('获取用户角色失败')
